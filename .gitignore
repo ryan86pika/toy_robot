@@ -2,11 +2,11 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/ToyRobot/.vs/ToyRobot/v15/Server/sqlite3
-/.vs/ToyRobotProject/v15/Server/sqlite3
-/ToyRobot/ToyRobotApp/bin/Debug/netcoreapp2.1
+/.vs
+/ToyRobot/.vs
+/ToyRobot/ToyRobotApp/bin
 /ToyRobot/ToyRobotApp/obj
-/ToyRobot/ToyRobotLibrary/bin/Debug/netcoreapp2.1
+/ToyRobot/ToyRobotLibrary/bin
 /ToyRobot/ToyRobotLibrary/obj
-/ToyRobot/ToyRobotTest/bin/Debug/netcoreapp2.1
+/ToyRobot/ToyRobotTest/bin
 /ToyRobot/ToyRobotTest/obj

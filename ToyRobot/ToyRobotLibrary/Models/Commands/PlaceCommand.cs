@@ -46,6 +46,9 @@ namespace ToyRobotLibrary.Models.Commands
 
         public string Exec(ref ToyRobot toyRobot, TableTop tableTop)
         {
+            if(_parsedPlacement.X < 0 || _parsedPlacement.X > tableTop.Width) throw new InvalidCommandException("The toy robot can not be placed out from the table");
+            else if (_parsedPlacement.Y < 0 || _parsedPlacement.Y > tableTop.Height) throw new InvalidCommandException("The toy robot can not be placed out from the table");
+
             toyRobot.X = _parsedPlacement.X;
             toyRobot.Y = _parsedPlacement.Y;
             toyRobot.Facing = _parsedPlacement.Facing.Value;
