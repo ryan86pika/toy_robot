@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ToyRobotLibrary.Models
+﻿namespace ToyRobotLibrary.Models
 {
     public class TableTop
     {
@@ -31,6 +27,8 @@ namespace ToyRobotLibrary.Models
         {
             _width = width;
             _height = height;
-        }        
+        }
+
+        public override string ToString() => string.Format("TableTop ( width : {0}, height : {1} )", _width, _height);
     }
 }

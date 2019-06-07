@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ToyRobotLibrary.Models.Exception
+﻿namespace ToyRobotLibrary.Exception
 {
     public class InvalidFacingException : System.Exception
     {

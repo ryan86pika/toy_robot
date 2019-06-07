@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Linq;
-using ToyRobotLibrary.Models;
-using ToyRobotLibrary.Models.Commands;
-using ToyRobotLibrary.Models.Exception;
+using ToyRobotLibrary.Exception;
+using ToyRobotLibrary.Services.Commands;
 
 namespace ToyRobotLibrary.Services
 {
     public class CommandsService
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(CommandsService));
+
         public static ICommand Parse(string commandString)
         {
             ICommand result = null;
+            log.Info(string.Format("commandString - parse: {0}", commandString));
             var splittedCommand = commandString.Split(' ');
             if (splittedCommand.Contains("PLACE"))
                 result = new PlaceCommand();

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ToyRobotLibrary.Models.Exception;
+﻿using ToyRobotLibrary.Exception;
+using ToyRobotLibrary.Models;
 
-namespace ToyRobotLibrary.Models.Commands
+namespace ToyRobotLibrary.Services.Commands
 {
     public class MoveCommand : ICommand
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(MoveCommand));
+
         public bool IsAvailableAsFirst => false;
 
         public void Parse(string commandString)
@@ -17,6 +17,8 @@ namespace ToyRobotLibrary.Models.Commands
 
         public string Exec(ref ToyRobot toyRobot, TableTop tableTop)
         {
+            log.Info(string.Format("Exec: {0} - {1}", toyRobot, tableTop));
+
             if (toyRobot.Facing == null) throw new InvalidFacingException("The first command should be 'PLACE X,Y,F'");
 
             else if (toyRobot.Facing.Equals(FacingEnum.NORTH) && (toyRobot.Y + 1) <= tableTop.Height) toyRobot.Y++;
@@ -24,6 +26,8 @@ namespace ToyRobotLibrary.Models.Commands
             else if (toyRobot.Facing.Equals(FacingEnum.SOUTH) && (toyRobot.Y - 1) >= 0) toyRobot.Y--;
             else if (toyRobot.Facing.Equals(FacingEnum.WEST) && (toyRobot.X - 1) >= 0) toyRobot.X--;
             else throw new InvalidCommandException("The toy robot can not falling from the table");
+
+            log.Info(string.Format("Exec - Result: {0}", toyRobot));
 
             return null;
         }

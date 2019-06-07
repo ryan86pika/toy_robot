@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ToyRobotLibrary.Models.Exception;
+using ToyRobotLibrary.Exception;
+using ToyRobotLibrary.Models;
 
-namespace ToyRobotLibrary.Models.Commands
+namespace ToyRobotLibrary.Services.Commands
 {
     public class ReportCommand : ICommand
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ReportCommand));
+
         public bool IsAvailableAsFirst => false;
 
         public void Parse(string commandString)
@@ -17,6 +18,8 @@ namespace ToyRobotLibrary.Models.Commands
 
         public string Exec(ref ToyRobot toyRobot, TableTop tableTop)
         {
+            log.Info(string.Format("Exec: {0} - {1}", toyRobot, tableTop));
+
             if (toyRobot.Facing == null) throw new InvalidFacingException("The first command should be 'PLACE X,Y,F'");
 
             return String.Format("{0},{1},{2}", toyRobot.X, toyRobot.Y, toyRobot.Facing);

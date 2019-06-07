@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ToyRobotLibrary.Models.Exception
+﻿namespace ToyRobotLibrary.Exception
 {
     public class ParsingStringCommandException : System.Exception
     {
